@@ -1,6 +1,6 @@
 """EX02 - Chardle - Our version of Wordle"""
 
-__author__ = 730656115
+__author__ = "730656115"
 
 
 # Prompting for a 5-character word
@@ -8,7 +8,7 @@ def input_word() -> str:
     """Asking the user for a word"""
     user_word: str = input("Enter a 5-character word: ")  # storing the user's input
     if len(user_word) != 5:  # testing if there are 5 characters in the word
-        print("Error: Word must contain 5 characters")
+        print("Error: Word must contain 5 characters.")
         exit()  # exits the program if the word > 5 characters long
     return user_word
 
