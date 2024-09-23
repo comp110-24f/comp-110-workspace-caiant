@@ -9,6 +9,7 @@ def input_word() -> str:
     user_word: str = input("Enter a 5-character word: ")  # storing the user's input
     if len(user_word) != 5:  # testing if there are 5 characters in the word
         print("Error: Word must contain 5 characters")
+        exit()  # exits the program if the word > 5 characters long
     return user_word
 
 
@@ -20,6 +21,7 @@ def input_letter() -> str:
     )  # storing the user's input for a single character
     if len(user_letter) != 1:  # seeing if it truly is a single character
         print("Error: Character must be a single character")
+        exit()  # exits the program if it is not a single character
     return user_letter
 
 
@@ -29,11 +31,11 @@ def contains_char(user_word: str, user_letter: str) -> None:
     print("searching for " + user_letter + " in " + user_word)
     count = 0
     i = 0
-    while i != len(user_word):
+    while i < len(user_word):
         if user_word[i] == user_letter:
             print(user_letter + " found at index " + str(i))
             count += 1  # increasing count by 1 each time
-            i += 1
+        i += 1
     if count == 0:  # if there are no matches at all
         print("no instances of " + user_letter + " found in " + user_word)
     elif count == 1:  # For 1 match
