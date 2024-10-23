@@ -11,19 +11,19 @@ import pytest
 def test_only_evens_no() -> None:
     """Checking if a list only contains odd numbers"""
     a: list[int] = [1, 1]
-    assert only_evens(a) == []
+    assert only_evens(a) == []  # true if an empty list is returned
 
 
 def test_only_evens_regular() -> None:
     """Checking if it will work properly with a list of odds and evens"""
     a: list[int] = [1, 2, 3, 4]
-    assert only_evens(a) == [2, 4]
+    assert only_evens(a) == [2, 4]  # true if only evens are returned
 
 
 def test_only_evens_all() -> None:
     """Checking it it will work with a list of only evens"""
     a: list[int] = [2, 4, 6]
-    assert only_evens(a) == [2, 4, 6]
+    assert only_evens(a) == [2, 4, 6]  # true even if same list of evens
 
 
 def test_sub_neg() -> None:
@@ -31,7 +31,7 @@ def test_sub_neg() -> None:
     b: list[int] = [1, 3, 5, 7]
     z = -2
     y = 3
-    assert sub(b, z, y) == [1, 3, 5]
+    assert sub(b, z, y) == [1, 3, 5]  # true, if start with starting index
 
 
 def test_sub_none() -> None:
@@ -39,7 +39,7 @@ def test_sub_none() -> None:
     b: list[int] = []
     z = 3
     y = 4
-    assert sub(b, z, y) == []
+    assert sub(b, z, y) == []  # true if returning empty list
 
 
 def test_sub_greater() -> None:
@@ -47,7 +47,7 @@ def test_sub_greater() -> None:
     b: list[int] = [10, 25, 30]
     z = 1
     y = 8
-    assert sub(b, z, y) == [25, 30]
+    assert sub(b, z, y) == [25, 30]  # true if returning a list with the ending index
 
 
 def test_sub_regular() -> None:
@@ -55,7 +55,7 @@ def test_sub_regular() -> None:
     b: list[int] = [2, 8, 7, 8, 9]
     z = 1
     y = 3
-    assert sub(b, z, y) == [8, 7]
+    assert sub(b, z, y) == [8, 7]  # true if mutated correctly
 
 
 def test_add_at_index_raises_indexerror():
@@ -75,13 +75,22 @@ def test_add_at_index_reg() -> None:
     num1 = 9
     num2 = 1
     add_at_index(c, num1, num2)
-    assert c == [1, 9, 2, 3]
+    assert c == [1, 9, 2, 3]  # true if can add at the middle of a list
 
 
 def test_add_at_index_one() -> None:
     """Test that the function properly mutates the list if length == 1"""
     c: list[int] = [8]
     num1 = 20
-    num2 = 1
+    num2 = 0
     add_at_index(c, num1, num2)
-    assert c == [8, 20]
+    assert c == [20, 8]  # true if u can add at end of list
+
+
+def test_add_at_index_empty() -> None:
+    """Test that the function works when c is an empty list"""
+    c: list[int] = []
+    num1 = 3
+    num2 = 0
+    add_at_index(c, num1, num2)
+    assert c == [3]  # adding the element to an empty list

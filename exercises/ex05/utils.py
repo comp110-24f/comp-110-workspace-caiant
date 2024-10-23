@@ -15,7 +15,7 @@ def only_evens(a: list[int]) -> list[int]:
 # a function that will generate a subset of the list
 def sub(b: list[int], z: int, y: int) -> list[int]:
     new: list[int] = list()
-    if len(b) == 0:  # if given an empyt list, return an empty list
+    if len(b) == 0:  # if given an empty list, return an empty list
         return []
     if y > len(
         b
@@ -38,13 +38,14 @@ def add_at_index(c: list[int], num1: int, num2: int) -> None:
         raise IndexError("Index is out of bounds for the input list")
     if num2 < 0:  # if the index is out of bounds because its negative
         raise IndexError("Index is out of bounds for the input list")
-    prev: int = c[len(c) - 1]  # storing the last digit
-    if len(c) == 1:  # if length of the list is 1, all you have to do is append
-        c.append(num1)
-    else:  # if length is > 1
-        initial: int = c[num2]  # the initial number at that index
-        c.append(initial)  # adding the initial number
-        for i in range(num2, len(c) - 1):  # shifting each item to the right
-            c[i] = c[i + 1]
+    if len(c) > 0:  # if the list already has items
+        c.append(len(c) - 1)  # add the pre-existing last item
+        index: int = len(c) - 1
+        while (
+            index > num2
+        ):  # while the biggest index of the list is > than the replaced index
+            c[index] = c[index - 1]
+            index -= 1
         c[num2] = num1
-        c[len(c) - 1] = prev
+    else:
+        c.append(num1)
