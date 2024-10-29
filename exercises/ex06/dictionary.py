@@ -73,7 +73,10 @@ def update_attendance(
     if (
         day in attendance_log
     ):  # if the day is already in dict, add the student to that list
-        attendance_log[day].append(student)
+        if student in attendance_log:
+            return None
+        else:
+            attendance_log[day].append(student)
     else:  # if new day, create a key for that day and start a list of students
         attendance_log[day] = [student]
     return None
