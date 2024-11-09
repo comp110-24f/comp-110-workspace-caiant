@@ -70,12 +70,10 @@ def alphabetizer(input_list: list[str]) -> dict[str, list[str]]:
 def update_attendance(
     attendance_log: dict[str, list[str]], day: str, student: str
 ) -> None:
-    if (
-        day in attendance_log
-    ):  # if the day is already in dict, add the student to that list
-        if student in attendance_log:
-            return None
-        else:
+    if day in attendance_log:
+        if (
+            student not in attendance_log[day]
+        ):  # if the day is already in dict, add the student to that list
             attendance_log[day].append(student)
     else:  # if new day, create a key for that day and start a list of students
         attendance_log[day] = [student]
